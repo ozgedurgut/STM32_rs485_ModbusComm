@@ -81,29 +81,6 @@ void HAL_UARTEx_RxEventCallback(UART_HandleTypeDef *huart, uint16_t Size)
 	else{
 		sendData(5);
 	}
-	/*  int ind;
-	  for (ind=0; ind<5; ind++) {
-		RxData[ind] = temperature[ind];
-	  }
-	  for (ind=0; ind<5; ind++) {
-	       printf("%d ", RxData[ind]);
-	  }
-	 // HAL_Delay (1000);
-
-	  int p =1;
-	  int n =0;
-	  if (RxData[0]>3){
-		  sendData(p);
-			//HAL_UARTEx_ReceiveToIdle_IT(&huart1, p, 5);
-	  }
-	  else {
-		  sendData(n);
-			HAL_UARTEx_ReceiveToIdle_IT(&huart1, n, 5);
-	  }*/
-	//	sendData(RxData);
-	//	memset (RxData, '\0',64);
-	// The C library function void *memset(void *str, int c, size_t n) copies the character c (an unsigned char)
-	// to the first n characters of the string pointed to, by the argument str.
 }
 /* USER CODE END 0 */
 

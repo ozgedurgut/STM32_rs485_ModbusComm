@@ -70,8 +70,6 @@ static void MX_USART1_UART_Init(void);
 /* USER CODE BEGIN 0 */
 uint8_t TxData[16];
 uint8_t RxData[16];
-int indx = 0;
-
 
 void sendData (uint8_t *data)
 {
@@ -90,31 +88,7 @@ void sendData (uint8_t *data)
 void HAL_UARTEx_RxEventCallback(UART_HandleTypeDef *huart, uint16_t Size)
 {
 	HAL_UARTEx_ReceiveToIdle_IT(&huart1, temperature, 16);
-	// The function ReceiveToIdle_IT will receive the incoming data and store in the RxData buffer, until the Idle line is detected.
-//	memset (RxData, '\0',64);
-
-/*
-// if else sonradan eklenmdi 2.11.2022
-	if(temperature[0]== '1'){
-		RxData[0] = 'H';
-		RxData[1] = 'I';
-		RxData[2] = 'G';
-		RxData[3] = 'H';
-		sendData(RxData);
-		HAL_UARTEx_ReceiveToIdle_IT(&huart1, RxData, 64);
-	}
-	else if(temperature[0]== '0') {
-		RxData[0] = 'L';
-		RxData[1] = 'O';
-		RxData[2] = 'W';
-		sendData(RxData);
-		HAL_UARTEx_ReceiveToIdle_IT(&huart1, RxData, 64);
-	}
-	else{
-		HAL_UARTEx_ReceiveToIdle_IT(&huart1, temperature, 16);
-	}
-*/
-
+	// The function ReceiveToIdle_IT will receive the incoming data and store in the temperature buffer, until the Idle line is detected.
 }
 
 /* USER CODE END 0 */

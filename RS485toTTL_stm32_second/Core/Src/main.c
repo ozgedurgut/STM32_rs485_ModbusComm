@@ -58,10 +58,13 @@ static void MX_USART1_UART_Init(void);
 /* USER CODE BEGIN 0 */
 uint8_t TxData[5];
 uint8_t RxData[5];
+int indx=0;
 uint8_t temperature[10];
 
 void sendData (UART_HandleTypeDef *huart, char _out[]){
 	HAL_GPIO_WritePin(TX_EN_GPIO_Port, TX_EN_Pin, 1);
+	sprintf(_out, "oz%d", indx++);
+
 	HAL_UART_Transmit(huart, (uint8_t *) _out, strlen(_out), 10);
 	HAL_GPIO_WritePin(TX_EN_GPIO_Port, TX_EN_Pin, 0);
 }
@@ -125,6 +128,9 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
+
+	    sendData(TxData);
+	    HAL_Delay(1000);
   }
   /* USER CODE END 3 */
 }
